@@ -34,6 +34,7 @@ public class HelloDispatcher1 extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		PrintWriter out = response.getWriter();
 		out.println("<br> dispatcher.include >>>> here <br>");
+		out.println("HelloDispatcher1.URI = "+request.getRequestURI() + "<br>");
 	}
 
 	/**

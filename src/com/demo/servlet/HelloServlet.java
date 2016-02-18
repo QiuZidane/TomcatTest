@@ -34,16 +34,15 @@ public class HelloServlet extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		System.out.println("service>>>");
-		super.service(request, response);	// 父service内有自动调用doPost和doGet的方法，如果没有这句，则需要自己调用doPost和doGet
+		System.out.println("service>>>");		
 		
 		 //业务逻辑  
 		 try{  
 		     //中文乱码  
 		     response.setContentType("text/html;charset=UTF-8");  
 		     PrintWriter pw=response.getWriter();  
-		     pw.println("URI = "+request.getRequestURI() + "<br>");
-		     pw.println("URL = "+request.getRequestURL() + "<br>");
+		     pw.println("HelloServlet.URI = "+request.getRequestURI() + "<br>");
+		     pw.println("HelloServlet.URL = "+request.getRequestURL() + "<br>");
 		     //1.得到ServletContext  
 		     ServletContext sc=this.getServletContext();  
 		     //2.添加属性  
@@ -54,12 +53,14 @@ public class HelloServlet extends HttpServlet {
 		     HttpSession hs=request.getSession(true);  
 		     hs.setAttribute("test","中国人");  
 		     hs.setMaxInactiveInterval(60*3);  
-		     pw.println("向session中添加一个test属性 他的值是中国人");  
+		     pw.println("向session中添加一个test属性 他的值是中国人<br>");  
 		       
 		       
 		 }catch(Exception ex){  
 		     ex.printStackTrace();  
 		 }
+		 
+		 super.service(request, response);	// 父service内有自动调用doPost和doGet的方法，如果没有这句，则需要自己调用doPost和doGet
 	}
     
 	/**
