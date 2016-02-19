@@ -6,6 +6,8 @@ import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -60,8 +62,23 @@ public class HelloServlet extends HttpServlet {
 		     ex.printStackTrace();  
 		 }
 		 
+		 String method = request.getMethod();
+		 if (method.equals("GET")) {
+			System.out.println("request method = \"get\"");
+			doGet(request, response);
+		} else if (method.equals("POST")) {
+			doPost(request, response);
+		} else { // 不支持当前的HTTP方法，做异常处理
+			
+		}
+		 
+		 
+		 
 		 super.service(request, response);	// 父service内有自动调用doPost和doGet的方法，如果没有这句，则需要自己调用doPost和doGet
 	}
+	
+
+	
     
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -87,7 +104,12 @@ public class HelloServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	
-
+	@Override
+	public void destroy() {
+		// TODO Auto-generated method stub
+		super.destroy();
+		System.out.println("destroy");
+	}
 	
 
 
