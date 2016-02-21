@@ -20,7 +20,7 @@ import com.sun.jmx.snmp.Enumerated;
 @WebServlet(
 		asyncSupported = true, 
 		urlPatterns = { 
-				"/HttpDemo", 
+				"/HttpDemo1", 
 				"/HD"
 		})
 public class HttpDemo extends HttpServlet {

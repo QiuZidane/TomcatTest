@@ -39,7 +39,9 @@ public class HelloServlet extends HttpServlet {
 		 //业务逻辑  
 		 try{  
 		     //中文乱码  
-		     response.setContentType("text/html;charset=UTF-8");  
+//		     response.setContentType("text/html;charset=UTF-8");  
+			 response.setContentType("text/html");
+			 response.setCharacterEncoding("UTF-8");
 		     PrintWriter pw=response.getWriter();  
 		     pw.println("HelloServlet.URI = "+request.getRequestURI() + "<br>");
 		     pw.println("HelloServlet.URL = "+request.getRequestURL() + "<br>");
@@ -55,7 +57,11 @@ public class HelloServlet extends HttpServlet {
 		     hs.setMaxInactiveInterval(60*3);  
 		     pw.println("向session中添加一个test属性 他的值是中国人<br>");  
 		       
-		       
+		     		     response.setStatus(HttpServletResponse.SC_OK);
+		     pw.println("status="+response.getStatus()+"<br>");  
+		     
+
+		     
 		 }catch(Exception ex){  
 		     ex.printStackTrace();  
 		 }
@@ -87,7 +93,7 @@ public class HelloServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	
-
+	
 	
 
 
