@@ -109,17 +109,15 @@ public class HelloServlet extends HttpServlet {
 		response.getWriter().write("This is doPost method<br>");
 		doGet(request, response);
 	}
-	
-<<<<<<< HEAD
-	
-=======
+
+
 	@Override
 	public void destroy() {
 		// TODO Auto-generated method stub
 		super.destroy();
 		System.out.println("destroy");
 	}
->>>>>>> 53bd04d5bea0b9a08dceb195e089fc8d3a803e24
+
 	
 
 
